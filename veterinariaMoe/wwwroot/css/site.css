@@ -282,3 +282,396 @@ body {
   background-color: var(--cafe-medio);
   color: var(--blanco);
 }
+
+/* ===== Encabezado de pagina interior ===== */
+.encabezado-pagina {
+  background: linear-gradient(135deg, var(--cafe-oscuro) 0%, var(--cafe-medio) 100%);
+  color: var(--blanco);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.titulo-pagina {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitulo-pagina {
+  font-size: 0.9rem;
+  color: var(--cafe-suave);
+  margin: 0.25rem 0 0;
+}
+
+.boton-nuevo {
+  background-color: var(--blanco);
+  color: var(--cafe-oscuro);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton-nuevo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== Seccion contenido ===== */
+.seccion-contenido {
+  padding-bottom: 3rem;
+}
+
+/* ===== Panel de filtros ===== */
+.panel-filtros {
+  background: var(--blanco);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--cafe-suave);
+}
+
+.etiqueta-campo {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--texto-medio);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.campo-texto {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--cafe-suave);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: var(--texto-oscuro);
+  background-color: var(--crema);
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.campo-texto:focus {
+  border-color: var(--cafe-medio);
+  background-color: var(--blanco);
+}
+
+/* ===== Tarjetas resumen ===== */
+.tarjeta-resumen {
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-resumen--total {
+  background-color: var(--cafe-oscuro);
+  color: var(--blanco);
+}
+
+.tarjeta-resumen--pendiente {
+  background-color: #F9A825;
+  color: var(--blanco);
+}
+
+.tarjeta-resumen--completada {
+  background-color: #558B2F;
+  color: var(--blanco);
+}
+
+.tarjeta-resumen--cancelada {
+  background-color: #B71C1C;
+  color: var(--blanco);
+}
+
+.resumen-numero {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.resumen-etiqueta {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+  opacity: 0.9;
+}
+
+/* ===== Panel tabla ===== */
+.panel-tabla {
+  background: var(--blanco);
+  border-radius: 12px;
+  border: 1px solid var(--cafe-suave);
+  overflow: hidden;
+}
+
+.panel-tabla__encabezado {
+  background-color: var(--cafe-oscuro);
+  padding: 1rem 1.5rem;
+}
+
+.panel-tabla__titulo {
+  color: var(--blanco);
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tabla-citas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabla-citas thead tr {
+  background-color: var(--crema);
+}
+
+.tabla-citas th {
+  padding: 0.85rem 1rem;
+  color: var(--texto-medio);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--cafe-suave);
+  white-space: nowrap;
+}
+
+.tabla-citas td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--crema);
+  color: var(--texto-oscuro);
+  vertical-align: middle;
+}
+
+.tabla-citas tbody tr:hover {
+  background-color: var(--crema);
+}
+
+/* ===== Celda mascota ===== */
+.celda-mascota {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.icono-especie {
+  font-size: 1.4rem;
+}
+
+.nombre-mascota {
+  display: block;
+  font-weight: 600;
+  color: var(--cafe-oscuro);
+}
+
+.raza-mascota {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--cafe-claro);
+}
+
+/* ===== Fecha y hora ===== */
+.fecha-cita {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.hora-cita {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--cafe-claro);
+}
+
+/* ===== Estados de cita ===== */
+.estado-cita {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado-pendiente {
+  background-color: #FFF8E1;
+  color: #F57F17;
+  border: 1px solid #FFE082;
+}
+
+.estado-completada {
+  background-color: #F1F8E9;
+  color: #33691E;
+  border: 1px solid #AED581;
+}
+
+.estado-cancelada {
+  background-color: #FFEBEE;
+  color: #B71C1C;
+  border: 1px solid #EF9A9A;
+}
+
+/* ===== Botones de accion en tabla ===== */
+.acciones-tabla {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.boton-accion {
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.boton-accion:hover {
+  transform: scale(1.1);
+}
+
+.boton-accion--ver {
+  background-color: var(--crema);
+}
+
+.boton-accion--editar {
+  background-color: #FFF8E1;
+}
+
+.boton-accion--cancelar {
+  background-color: #FFEBEE;
+  color: #B71C1C;
+  font-weight: 700;
+}
+
+/* ===== Modal ===== */
+.contenido-modal {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.encabezado-modal {
+  background-color: var(--cafe-oscuro);
+  color: var(--blanco);
+  border-bottom: none;
+  padding: 1.2rem 1.5rem;
+}
+
+.titulo-modal {
+  color: var(--blanco);
+  font-weight: 700;
+}
+
+.cuerpo-modal {
+  background-color: var(--crema);
+  padding: 1.5rem;
+}
+
+.pie-modal {
+  background-color: var(--crema);
+  border-top: 1px solid var(--cafe-suave);
+  padding: 1rem 1.5rem;
+}
+
+/* ===== Panel formulario lateral ===== */
+.panel-formulario {
+  background: var(--blanco);
+  border-radius: 12px;
+  border: 1px solid var(--cafe-suave);
+  padding: 1.5rem;
+}
+
+.titulo-panel {
+  color: var(--cafe-oscuro);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--cafe-suave);
+}
+
+.campo-grupo {
+  margin-bottom: 0.9rem;
+}
+
+/* ===== Formulario de registro ===== */
+.registro-contenedor {
+  background: var(--blanco);
+  border-radius: 12px;
+  border: 1px solid var(--cafe-suave);
+  padding: 1.5rem;
+}
+
+.registro-contenedor .titulo-panel {
+  color: var(--cafe-oscuro);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--cafe-suave);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-medio);
+  margin-bottom: 0.3rem;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--cafe-suave);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: var(--texto-oscuro);
+  background-color: var(--crema);
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--cafe-medio);
+  background-color: var(--blanco);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.boton-guardar {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: var(--cafe-medio);
+  color: var(--blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.boton-guardar:hover {
+  background-color: var(--cafe-oscuro);
+}

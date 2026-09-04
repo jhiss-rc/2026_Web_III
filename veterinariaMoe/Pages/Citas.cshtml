@@ -1,0 +1,114 @@
+@page
+@model veterinariaMoe.Pages.CitasModel
+@{
+    ViewData["Title"] = "Gestión de Citas";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Gestión de Citas</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Nueva Cita</h5>
+                <form method="post" asp-antiforgery="false">
+                    @Html.AntiForgeryToken()
+                    <div class="campo">
+                        <label>Mascota</label>
+                        <input asp-for="Mascota" placeholder="Ej: Rocky" />
+                    </div>
+                    <div class="campo">
+                        <label>Veterinario</label>
+                        <input asp-for="Veterinario" placeholder="Ej: Dr. García" />
+                    </div>
+                    <div class="campo">
+                        <label>Fecha</label>
+                        <input asp-for="Fecha" type="date" />
+                    </div>
+                    <div class="campo">
+                        <label>Hora</label>
+                        <input asp-for="Hora" type="time" />
+                    </div>
+                    <div class="campo">
+                        <label>Motivo</label>
+                        <input asp-for="Motivo" placeholder="Ej: Revisión general" />
+                    </div>
+                    <div class="campo">
+                        <label>Estado</label>
+                        <select asp-for="EstadoCita">
+                            <option value="">Selecciona un estado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="completada">Completada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Diagnóstico</label>
+                        <textarea asp-for="Diagnostico" rows="2" placeholder="Opcional..."></textarea>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar Cita</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla de citas -->
+        <div class="col-md-8">
+            <div class="panel-filtros mb-3">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-4">
+                        <label class="etiqueta-campo">Buscar</label>
+                        <input type="text" class="campo-texto" placeholder="Mascota o propietario..." required />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="etiqueta-campo">Fecha</label>
+                        <input type="date" class="campo-texto" required />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="etiqueta-campo">Estado</label>
+                        <select class="campo-texto" required>
+                            <option value="">Todos</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="completada">Completada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="boton-cafe w-100">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-tabla">
+                <div class="panel-tabla__encabezado">
+                    <span class="panel-tabla__titulo">Lista de Citas</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="tabla-citas">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Mascota</th>
+                                <th>Propietario</th>
+                                <th>Veterinario</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Las filas se cargarán desde el backend -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
