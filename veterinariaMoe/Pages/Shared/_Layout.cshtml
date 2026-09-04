@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Arca de Moe</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/veterinariaMoe.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Barra de navegacion -->
+    <header>
+        <nav class="navbar barra-navegacion navbar-expand-md">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    🐾 Arca de Moe
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                        aria-expanded="false" aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto gap-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Propietarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mascotas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Veterinarios</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Pie de pagina -->
+    <footer class="pie-pagina">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6>🐾 Arca de Moe</h6>
+                    <p>Tu veterinaria de confianza. Cuidamos a tus mascotas con amor y dedicación profesional.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6>Contacto</h6>
+                    <address>
+                         Av. Principal 123<br />
+                         (555) 123-4567<br />
+                         contacto@arcademoe.com
+                    </address>
+                </div>
+                <div class="col-md-4">
+                    <h6>Horarios</h6>
+                    <p>
+                        Lunes a Viernes: 8:00 - 18:00<br />
+                        Sábado: 9:00 - 14:00<br />
+                        Domingo: Cerrado
+                    </p>
+                </div>
+            </div>
+            <hr class="divisor-pie" />
+            <p class="texto-derechos">&copy; 2026 Arca de Moe — Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
