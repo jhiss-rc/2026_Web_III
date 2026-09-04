@@ -1,0 +1,91 @@
+@page
+@model veterinariaMoe.Pages.PropietariosModel
+@{
+    ViewData["Title"] = "Propietarios";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Propietarios</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row g-4">
+
+        <!-- Formulario -->
+        <div class="col-md-4">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Nuevo Propietario</h5>
+                <form method="post" asp-antiforgery="false">
+                    @Html.AntiForgeryToken()
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input asp-for="Nombre" placeholder="Ej: Juan" />
+                    </div>
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input asp-for="Apellidos" placeholder="Ej: Pérez" />
+                    </div>
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input asp-for="Telefono" placeholder="Ej: 555-1234" />
+                    </div>
+                    <div class="campo">
+                        <label>Email</label>
+                        <input asp-for="Email" type="email" placeholder="Ej: juan@correo.com" />
+                    </div>
+                    <div class="campo">
+                        <label>Estado</label>
+                        <select asp-for="Estado">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="col-md-8">
+            <div class="panel-tabla">
+                <div class="panel-tabla__encabezado">
+                    <span class="panel-tabla__titulo">Lista de Propietarios</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="tabla-citas">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.ListaPropietarios)
+                            {
+                                <tr>
+                                    <td>@p.Id</td>
+                                    <td>@p.Nombre</td>
+                                    <td>@p.Apellidos</td>
+                                    <td>@p.Telefono</td>
+                                    <td>@p.Email</td>
+                                    <td>
+                                        <span class="estado-cita @(p.Estado ? "estado-completada" : "estado-cancelada")">
+                                            @(p.Estado ? "Activo" : "Inactivo")
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

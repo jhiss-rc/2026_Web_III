@@ -1,5 +1,6 @@
 @page
 @model veterinariaMoe.Pages.CitasModel
+@using veterinariaMoe.Datos
 @{
     ViewData["Title"] = "Gestión de Citas";
 }
@@ -20,7 +21,13 @@
                     @Html.AntiForgeryToken()
                     <div class="campo">
                         <label>Mascota</label>
-                        <input asp-for="Mascota" placeholder="Ej: Rocky" />
+                        <select asp-for="MascotaId">
+                            <option value="">Selecciona una mascota</option>
+                            @foreach (var m in Model.ListaMascotas)
+                            {
+                                <option value="@m.Id">@m.Nombre (@m.Especie)</option>
+                            }
+                        </select>
                     </div>
                     <div class="campo">
                         <label>Veterinario</label>
@@ -103,7 +110,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Las filas se cargarán desde el backend -->
+                            @foreach (var cita in Model.ListaCitas)
+                            {
+                                var mascota = Model.ListaMascotas.FirstOrDefault(m => m.Id == cita.MascotaId);
+                                var propietario = BaseDatos.Propietarios.FirstOrDefault(p => p.Id == mascota!.PropietarioId);
+                                <tr>
+                                    <td>@cita.Id</td>
+                                    <td>@(mascota != null ? mascota.Nombre : "-")</td>
+                                    <td>@(propietario != null ? propietario.Nombre + " " + propietario.Apellidos : "-")</td>
+                                    <td>@cita.NombreVeterinario</td>
+                                    <td>@cita.Fecha.ToString("dd/MM/yyyy")</td>
+                                    <td>@cita.Hora</td>
+                                    <td>@cita.Motivo</td>
+                                    <td>
+                                        <span class="estado-cita estado-@cita.EstadoCita.ToLower()">
+                                            @cita.EstadoCita
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="acciones-tabla">
+                                            <button class="boton-accion boton-accion--editar">Editar</button>
+                                            <button class="boton-accion boton-accion--cancelar">Cancelar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

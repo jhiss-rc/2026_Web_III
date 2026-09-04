@@ -1,0 +1,104 @@
+@page
+@model veterinariaMoe.Pages.MascotasModel
+@{
+    ViewData["Title"] = "Mascotas";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Mascotas</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row g-4">
+
+        <!-- Formulario -->
+        <div class="col-md-4">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Nueva Mascota</h5>
+                <form method="post" asp-antiforgery="false">
+                    @Html.AntiForgeryToken()
+                    <div class="campo">
+                        <label>Propietario</label>
+                        <select asp-for="PropietarioId">
+                            <option value="">Selecciona un propietario</option>
+                            @foreach (var p in Model.ListaPropietarios)
+                            {
+                                <option value="@p.Id">@p.Nombre @p.Apellidos</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input asp-for="Nombre" placeholder="Ej: Rocky" />
+                    </div>
+                    <div class="campo">
+                        <label>Especie</label>
+                        <input asp-for="Especie" placeholder="Ej: Perro" />
+                    </div>
+                    <div class="campo">
+                        <label>Raza</label>
+                        <input asp-for="Raza" placeholder="Ej: Golden Retriever" />
+                    </div>
+                    <div class="campo">
+                        <label>Fecha de Nacimiento</label>
+                        <input asp-for="FechaNacimiento" type="date" />
+                    </div>
+                    <div class="campo">
+                        <label>Estado</label>
+                        <select asp-for="Estado">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="col-md-8">
+            <div class="panel-tabla">
+                <div class="panel-tabla__encabezado">
+                    <span class="panel-tabla__titulo">Lista de Mascotas</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="tabla-citas">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Propietario</th>
+                                <th>Especie</th>
+                                <th>Raza</th>
+                                <th>Fecha Nac.</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in Model.ListaMascotas)
+                            {
+                                var propietario = Model.ListaPropietarios.FirstOrDefault(p => p.Id == m.PropietarioId);
+                                <tr>
+                                    <td>@m.Id</td>
+                                    <td>@m.Nombre</td>
+                                    <td>@(propietario != null ? propietario.Nombre + " " + propietario.Apellidos : "-")</td>
+                                    <td>@m.Especie</td>
+                                    <td>@m.Raza</td>
+                                    <td>@m.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <span class="estado-cita @(m.Estado ? "estado-completada" : "estado-cancelada")">
+                                            @(m.Estado ? "Activo" : "Inactivo")
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
