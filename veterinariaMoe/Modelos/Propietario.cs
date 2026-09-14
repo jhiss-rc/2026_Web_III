@@ -28,5 +28,7 @@ namespace veterinariaMoe.Modelos
 
         [Display(Name = "Estado")]
         public bool Estado { get; set; } = true;
+
+        public ICollection<Mascota> Mascotas { get; set; } = new List<Mascota>();
     }
 }

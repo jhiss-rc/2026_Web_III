@@ -1,54 +1,52 @@
 @page
 @model veterinariaMoe.Pages_ScaffoldVeterinarios.CreateModel
+@{
+    ViewData["Title"] = "Nuevo Veterinario";
+}
 
-        @{
-        ViewData["Title"] = "Create";
-        }
-        
-        <h1>Create</h1>
-        
-    <h4>Veterinario</h4>
-    <hr />
-    <div class="row">
-    <div class="col-md-4">
-    <form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
-                <label asp-for="Veterinario.Nombre" class="control-label"></label>
-                <input asp-for="Veterinario.Nombre" class="form-control" aria-required="true"/>
-                <span asp-validation-for="Veterinario.Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
-                <label asp-for="Veterinario.Apellidos" class="control-label"></label>
-                <input asp-for="Veterinario.Apellidos" class="form-control" aria-required="true"/>
-                <span asp-validation-for="Veterinario.Apellidos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
-                <label asp-for="Veterinario.Especialidad" class="control-label"></label>
-                <input asp-for="Veterinario.Especialidad" class="form-control" aria-required="true"/>
-                <span asp-validation-for="Veterinario.Especialidad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Veterinario.Telefono" class="control-label"></label>
-                <input asp-for="Veterinario.Telefono" class="form-control" />
-                <span asp-validation-for="Veterinario.Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Veterinario.Estado" /> @Html.DisplayNameFor(model => model.Veterinario.Estado)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Nuevo Veterinario</h1>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Datos del Veterinario</h5>
+                <form method="post">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input asp-for="Veterinario.Nombre" placeholder="Ej: Juan" />
+                        <span asp-validation-for="Veterinario.Nombre" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input asp-for="Veterinario.Apellidos" placeholder="Ej: García" />
+                        <span asp-validation-for="Veterinario.Apellidos" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label>Especialidad</label>
+                        <input asp-for="Veterinario.Especialidad" placeholder="Ej: Cirugía" />
+                        <span asp-validation-for="Veterinario.Especialidad" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input asp-for="Veterinario.Telefono" placeholder="Ej: 555-1234" />
+                        <span asp-validation-for="Veterinario.Telefono" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label>Estado</label>
+                        <select asp-for="Veterinario.Estado">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar</button>
+                    <a asp-page="./Index" class="boton-cafe-borde d-block text-center mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-

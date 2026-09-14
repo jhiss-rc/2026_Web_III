@@ -19,11 +19,13 @@ namespace veterinariaMoe.Pages_ScaffoldMascotas
             _context = context;
         }
 
-        public IList<Mascota> Mascota { get;set; } = default!;
+        public IList<Mascota> Mascota { get; set; } = default!;
+        public List<Propietario> ListaPropietarios { get; set; } = new();
 
         public async Task OnGetAsync()
         {
             Mascota = await _context.Mascotas.ToListAsync();
+            ListaPropietarios = await _context.Propietarios.ToListAsync();
         }
     }
 }

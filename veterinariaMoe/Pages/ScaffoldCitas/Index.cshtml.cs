@@ -19,11 +19,17 @@ namespace veterinariaMoe.Pages_ScaffoldCitas
             _context = context;
         }
 
-        public IList<Cita> Cita { get;set; } = default!;
+        public IList<Cita> Cita { get; set; } = default!;
+        public List<Mascota> ListaMascotas { get; set; } = new();
+        public List<Veterinario> ListaVeterinarios { get; set; } = new();
+        public List<Propietario> ListaPropietarios { get; set; } = new();
 
         public async Task OnGetAsync()
         {
             Cita = await _context.Citas.ToListAsync();
+            ListaMascotas = await _context.Mascotas.ToListAsync();
+            ListaVeterinarios = await _context.Veterinarios.ToListAsync();
+            ListaPropietarios = await _context.Propietarios.ToListAsync();
         }
     }
 }

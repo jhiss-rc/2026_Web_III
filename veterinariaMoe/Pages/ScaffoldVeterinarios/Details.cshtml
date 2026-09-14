@@ -1,49 +1,45 @@
 @page
 @model veterinariaMoe.Pages_ScaffoldVeterinarios.DetailsModel
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle Veterinario";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Veterinario</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Veterinario.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Veterinario.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Veterinario.Apellidos)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Veterinario.Apellidos)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Veterinario.Especialidad)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Veterinario.Especialidad)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Veterinario.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Veterinario.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Veterinario.Estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Veterinario.Estado)
-        </dd>
-    </dl>
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Detalle del Veterinario</h1>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Veterinario.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Información</h5>
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input value="@Model.Veterinario.Nombre" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Apellidos</label>
+                    <input value="@Model.Veterinario.Apellidos" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Especialidad</label>
+                    <input value="@Model.Veterinario.Especialidad" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input value="@Model.Veterinario.Telefono" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@(Model.Veterinario.Estado ? "Activo" : "Inactivo")" class="campo-texto" disabled />
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-page="./Edit" asp-route-id="@Model.Veterinario.Id" class="boton-cafe">Editar</a>
+                    <a asp-page="./Index" class="boton-cafe-borde">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

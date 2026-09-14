@@ -20,12 +20,14 @@ namespace veterinariaMoe.Pages
         public List<Cita> ListaCitas { get; set; } = new();
         public List<Mascota> ListaMascotas { get; set; } = new();
         public List<Propietario> ListaPropietarios { get; set; } = new();
+        public List<Veterinario> ListaVeterinarios { get; set; } = new();
 
         public void OnGet()
         {
             ListaCitas = _context.Citas.ToList();
             ListaMascotas = _context.Mascotas.ToList();
             ListaPropietarios = _context.Propietarios.ToList();
+            ListaVeterinarios = _context.Veterinarios.ToList();
         }
 
         public IActionResult OnPost()

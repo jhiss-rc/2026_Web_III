@@ -1,60 +1,61 @@
 @page
 @model veterinariaMoe.Pages_ScaffoldVeterinarios.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Veterinarios";
 }
 
-<h1>Index</h1>
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Veterinarios</h1>
+    </div>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Veterinario[0].Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Veterinario[0].Apellidos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Veterinario[0].Especialidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Veterinario[0].Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Veterinario[0].Estado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Veterinario) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especialidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container seccion-contenido">
+    <div class="mb-3">
+        <a asp-page="Create" class="boton-cafe">+ Nuevo Veterinario</a>
+    </div>
+    <div class="panel-tabla">
+        <div class="panel-tabla__encabezado">
+            <span class="panel-tabla__titulo">Lista de Veterinarios</span>
+        </div>
+        <div class="table-responsive">
+            <table class="tabla-citas">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Especialidad</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Veterinario)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellidos</td>
+                            <td>@item.Especialidad</td>
+                            <td>@item.Telefono</td>
+                            <td>
+                                <span class="estado-cita @(item.Estado ? "estado-completada" : "estado-cancelada")">
+                                    @(item.Estado ? "Activo" : "Inactivo")
+                                </span>
+                            </td>
+                            <td>
+                                <div class="acciones-tabla">
+                                    <a asp-page="./Edit" asp-route-id="@item.Id" class="boton-accion boton-accion--editar">Editar</a>
+                                    <a asp-page="./Details" asp-route-id="@item.Id" class="boton-accion boton-accion--ver">Ver</a>
+                                    <a asp-page="./Delete" asp-route-id="@item.Id" class="boton-accion boton-accion--cancelar">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

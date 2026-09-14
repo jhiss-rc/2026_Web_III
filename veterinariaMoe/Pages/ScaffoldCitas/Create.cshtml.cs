@@ -19,19 +19,25 @@ namespace veterinariaMoe.Pages_ScaffoldCitas
             _context = context;
         }
 
+        public List<Mascota> ListaMascotas { get; set; } = new();
+        public List<Veterinario> ListaVeterinarios { get; set; } = new();
+
         public IActionResult OnGet()
         {
+            ListaMascotas = _context.Mascotas.ToList();
+            ListaVeterinarios = _context.Veterinarios.ToList();
             return Page();
         }
 
         [BindProperty]
         public Cita Cita { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
+                ListaMascotas = _context.Mascotas.ToList();
+                ListaVeterinarios = _context.Veterinarios.ToList();
                 return Page();
             }
 

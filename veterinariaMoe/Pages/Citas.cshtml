@@ -31,8 +31,14 @@
                     </div>
                     <div class="campo">
                         <label>Veterinario</label>
-                        <input asp-for="Cita.NombreVeterinario" placeholder="Ej: Dr. García" />
-                        <span asp-validation-for="Cita.NombreVeterinario" class="texto-error"></span>
+                        <select asp-for="Cita.VeterinarioId">
+                            <option value="">Selecciona un veterinario</option>
+                            @foreach (var v in Model.ListaVeterinarios)
+                            {
+                                <option value="@v.Id">@v.Nombre @v.Apellidos</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Cita.VeterinarioId" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Fecha</label>
@@ -119,11 +125,12 @@
                             {
                                 var mascota = Model.ListaMascotas.FirstOrDefault(m => m.Id == cita.MascotaId);
                                 var propietario = Model.ListaPropietarios.FirstOrDefault(p => p.Id == mascota!.PropietarioId);
+                                var veterinario = Model.ListaVeterinarios.FirstOrDefault(v => v.Id == cita.VeterinarioId);
                                 <tr>
                                     <td>@cita.Id</td>
                                     <td>@(mascota != null ? mascota.Nombre : "-")</td>
                                     <td>@(propietario != null ? propietario.Nombre + " " + propietario.Apellidos : "-")</td>
-                                    <td>@cita.NombreVeterinario</td>
+                                    <td>@(veterinario != null ? veterinario.Nombre + " " + veterinario.Apellidos : "-")</td>
                                     <td>@cita.Fecha.ToString("dd/MM/yyyy")</td>
                                     <td>@cita.Hora</td>
                                     <td>@cita.Motivo</td>

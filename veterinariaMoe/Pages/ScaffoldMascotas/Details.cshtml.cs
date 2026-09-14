@@ -20,20 +20,17 @@ namespace veterinariaMoe.Pages_ScaffoldMascotas
         }
 
         public Mascota Mascota { get; set; } = default!;
+        public Propietario? Propietario { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var mascota = await _context.Mascotas.FirstOrDefaultAsync(m => m.Id == id);
-
             if (mascota is not null)
             {
                 Mascota = mascota;
-
+                Propietario = await _context.Propietarios.FirstOrDefaultAsync(p => p.Id == mascota.PropietarioId);
                 return Page();
             }
 

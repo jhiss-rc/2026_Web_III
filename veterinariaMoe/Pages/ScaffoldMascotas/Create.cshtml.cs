@@ -19,8 +19,11 @@ namespace veterinariaMoe.Pages_ScaffoldMascotas
             _context = context;
         }
 
+        public List<Propietario> ListaPropietarios { get; set; } = new();
+
         public IActionResult OnGet()
         {
+            ListaPropietarios = _context.Propietarios.ToList();
             return Page();
         }
 

@@ -12,12 +12,7 @@ namespace veterinariaMoe.Modelos
 
         [Required(ErrorMessage = "El veterinario es obligatorio")]
         [Display(Name = "Veterinario")]
-        public int VeterinarioId { get; set; }
-
-        [Required(ErrorMessage = "El veterinario es obligatoria")]
-        [StringLength(100, ErrorMessage = "El nombre no puede exceder los 100 caracteres")]
-        [Display(Name = "Veterinario")]
-        public string? NombreVeterinario { get; set; }
+        public int? VeterinarioId { get; set; }
 
         [Required(ErrorMessage = "La fecha es obligatoria")]
         [DataType(DataType.Date)]

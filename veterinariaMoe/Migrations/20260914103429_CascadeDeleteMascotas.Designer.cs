@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using veterinariaMoe.Datos;
 
@@ -11,9 +12,11 @@ using veterinariaMoe.Datos;
 namespace veterinariaMoe.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    partial class VeterinariaContextModelSnapshot : ModelSnapshot
+    [Migration("20260914103429_CascadeDeleteMascotas")]
+    partial class CascadeDeleteMascotas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,14 +56,15 @@ namespace veterinariaMoe.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("NombreVeterinario")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("VeterinarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MascotaId");
-
-                    b.HasIndex("VeterinarioId");
 
                     b.ToTable("Citas");
                 });
@@ -171,21 +175,6 @@ namespace veterinariaMoe.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Veterinarios");
-                });
-
-            modelBuilder.Entity("veterinariaMoe.Modelos.Cita", b =>
-                {
-                    b.HasOne("veterinariaMoe.Modelos.Mascota", null)
-                        .WithMany()
-                        .HasForeignKey("MascotaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("veterinariaMoe.Modelos.Veterinario", null)
-                        .WithMany()
-                        .HasForeignKey("VeterinarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("veterinariaMoe.Modelos.Mascota", b =>

@@ -1,49 +1,45 @@
 @page
 @model veterinariaMoe.Pages_ScaffoldPropietarios.DetailsModel
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle Propietario";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Propietario</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Propietario.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Propietario.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Propietario.Apellidos)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Propietario.Apellidos)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Propietario.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Propietario.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Propietario.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Propietario.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Propietario.Estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Propietario.Estado)
-        </dd>
-    </dl>
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Detalle del Propietario</h1>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Propietario.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Información</h5>
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input value="@Model.Propietario.Nombre" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Apellidos</label>
+                    <input value="@Model.Propietario.Apellidos" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input value="@Model.Propietario.Telefono" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Email</label>
+                    <input value="@Model.Propietario.Email" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@(Model.Propietario.Estado ? "Activo" : "Inactivo")" class="campo-texto" disabled />
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-page="./Edit" asp-route-id="@Model.Propietario.Id" class="boton-cafe">Editar</a>
+                    <a asp-page="./Index" class="boton-cafe-borde">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
