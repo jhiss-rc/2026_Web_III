@@ -1,0 +1,73 @@
+@page
+@model veterinariaMoe.Pages_ScaffoldCitas.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Cita</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cita.Id" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.MascotaId" class="control-label"></label>
+                <input asp-for="Cita.MascotaId" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.MascotaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.VeterinarioId" class="control-label"></label>
+                <input asp-for="Cita.VeterinarioId" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.VeterinarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.NombreVeterinario" class="control-label"></label>
+                <input asp-for="Cita.NombreVeterinario" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.NombreVeterinario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.Fecha" class="control-label"></label>
+                <input asp-for="Cita.Fecha" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.Hora" class="control-label"></label>
+                <input asp-for="Cita.Hora" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.Hora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Cita.Motivo" class="control-label"></label>
+                <input asp-for="Cita.Motivo" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Cita.Motivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cita.EstadoCita" class="control-label"></label>
+                <input asp-for="Cita.EstadoCita" class="form-control" />
+                <span asp-validation-for="Cita.EstadoCita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cita.Diagnostico" class="control-label"></label>
+                <input asp-for="Cita.Diagnostico" class="form-control" />
+                <span asp-validation-for="Cita.Diagnostico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
