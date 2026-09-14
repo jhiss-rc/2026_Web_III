@@ -7,6 +7,13 @@ namespace veterinariaMoe.Pages
 {
     public class MascotasModel : PageModel
     {
+        private readonly VeterinariaContext _context;
+
+        public MascotasModel(VeterinariaContext context)
+        {
+            _context = context;
+        }
+
         [BindProperty]
         public Mascota Mascota { get; set; } = new();
 
@@ -15,21 +22,21 @@ namespace veterinariaMoe.Pages
 
         public void OnGet()
         {
-            ListaMascotas = BaseDatos.Mascotas;
-            ListaPropietarios = BaseDatos.Propietarios;
+            ListaMascotas = _context.Mascotas.ToList();
+            ListaPropietarios = _context.Propietarios.ToList();
         }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                ListaMascotas = BaseDatos.Mascotas;
-                ListaPropietarios = BaseDatos.Propietarios;
+                ListaMascotas = _context.Mascotas.ToList();
+                ListaPropietarios = _context.Propietarios.ToList();
                 return Page();
             }
 
-            Mascota.Id = BaseDatos.Mascotas.Count + 1;
-            BaseDatos.Mascotas.Add(Mascota);
+            _context.Mascotas.Add(Mascota);
+            _context.SaveChanges();
 
             return RedirectToPage("/Mascotas");
         }

@@ -1,6 +1,5 @@
 @page
 @model veterinariaMoe.Pages.CitasModel
-@using veterinariaMoe.Datos
 @{
     ViewData["Title"] = "Gestión de Citas";
 }
@@ -119,7 +118,7 @@
                             @foreach (var cita in Model.ListaCitas)
                             {
                                 var mascota = Model.ListaMascotas.FirstOrDefault(m => m.Id == cita.MascotaId);
-                                var propietario = BaseDatos.Propietarios.FirstOrDefault(p => p.Id == mascota!.PropietarioId);
+                                var propietario = Model.ListaPropietarios.FirstOrDefault(p => p.Id == mascota!.PropietarioId);
                                 <tr>
                                     <td>@cita.Id</td>
                                     <td>@(mascota != null ? mascota.Nombre : "-")</td>

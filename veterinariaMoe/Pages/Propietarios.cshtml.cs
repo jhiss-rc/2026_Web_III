@@ -7,6 +7,13 @@ namespace veterinariaMoe.Pages
 {
     public class PropietariosModel : PageModel
     {
+        private readonly VeterinariaContext _context;
+
+        public PropietariosModel(VeterinariaContext context)
+        {
+            _context = context;
+        }
+
         [BindProperty]
         public Propietario Propietario { get; set; } = new();
 
@@ -14,19 +21,19 @@ namespace veterinariaMoe.Pages
 
         public void OnGet()
         {
-            ListaPropietarios = BaseDatos.Propietarios;
+            ListaPropietarios = _context.Propietarios.ToList();
         }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                ListaPropietarios = BaseDatos.Propietarios;
+                ListaPropietarios = _context.Propietarios.ToList();
                 return Page();
             }
 
-            Propietario.Id = BaseDatos.Propietarios.Count + 1;
-            BaseDatos.Propietarios.Add(Propietario);
+            _context.Propietarios.Add(Propietario);
+            _context.SaveChanges();
 
             return RedirectToPage("/Propietarios");
         }

@@ -12,12 +12,12 @@ namespace veterinariaMoe.Modelos
         public string Nombre { get; set; } = "";
 
         [Required(ErrorMessage = "Los apellidos son obligatorios")]
-        [StringLength(100, ErrorMessage = "Los apellidos no pueden exceder los 100 caracteres")]
+        [StringLength(75, ErrorMessage = "Los apellidos no pueden exceder los 75 caracteres")]
         [Display(Name = "Apellidos")]
         public string Apellidos { get; set; } = "";
 
         [Required(ErrorMessage = "La especialidad es obligatoria")]
-        [StringLength(100, ErrorMessage = "La especialidad no puede exceder los 100 caracteres")]
+        [StringLength(75, ErrorMessage = "La especialidad no puede exceder los 75 caracteres")]
         [Display(Name = "Especialidad")]
         public string Especialidad { get; set; } = "";
 
