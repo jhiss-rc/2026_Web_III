@@ -21,33 +21,38 @@
                     @Html.AntiForgeryToken()
                     <div class="campo">
                         <label>Mascota</label>
-                        <select asp-for="MascotaId">
+                        <select asp-for="Cita.MascotaId">
                             <option value="">Selecciona una mascota</option>
                             @foreach (var m in Model.ListaMascotas)
                             {
                                 <option value="@m.Id">@m.Nombre (@m.Especie)</option>
                             }
                         </select>
+                        <span asp-validation-for="Cita.MascotaId" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Veterinario</label>
-                        <input asp-for="Veterinario" placeholder="Ej: Dr. García" />
+                        <input asp-for="Cita.NombreVeterinario" placeholder="Ej: Dr. García" />
+                        <span asp-validation-for="Cita.NombreVeterinario" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Fecha</label>
-                        <input asp-for="Fecha" type="date" />
+                        <input asp-for="Cita.Fecha" type="date" />
+                        <span asp-validation-for="Cita.Fecha" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Hora</label>
-                        <input asp-for="Hora" type="time" />
+                        <input asp-for="Cita.Hora" type="time" />
+                        <span asp-validation-for="Cita.Hora" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Motivo</label>
-                        <input asp-for="Motivo" placeholder="Ej: Revisión general" />
+                        <input asp-for="Cita.Motivo" placeholder="Ej: Revisión general" />
+                        <span asp-validation-for="Cita.Motivo" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Estado</label>
-                        <select asp-for="EstadoCita">
+                        <select asp-for="Cita.EstadoCita">
                             <option value="">Selecciona un estado</option>
                             <option value="pendiente">Pendiente</option>
                             <option value="completada">Completada</option>
@@ -56,7 +61,8 @@
                     </div>
                     <div class="campo">
                         <label>Diagnóstico</label>
-                        <textarea asp-for="Diagnostico" rows="2" placeholder="Opcional..."></textarea>
+                        <textarea asp-for="Cita.Diagnostico" rows="2" placeholder="Opcional..."></textarea>
+                        <span asp-validation-for="Cita.Diagnostico" class="texto-error"></span>
                     </div>
                     <button type="submit" class="boton-guardar">Guardar Cita</button>
                 </form>

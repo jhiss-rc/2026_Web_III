@@ -12,7 +12,7 @@ namespace veterinariaMoe.Modelos
         public string Nombre { get; set; } = "";
 
         [Required(ErrorMessage = "Los apellidos son obligatorios")]
-        [StringLength(100, ErrorMessage = "Los apellidos no pueden exceder los 100 caracteres")]
+        [StringLength(75, ErrorMessage = "Los apellidos no pueden exceder los 75 caracteres")]
         [Display(Name = "Apellidos")]
         public string Apellidos { get; set; } = "";
 

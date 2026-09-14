@@ -21,33 +21,38 @@
                     @Html.AntiForgeryToken()
                     <div class="campo">
                         <label>Propietario</label>
-                        <select asp-for="PropietarioId">
+                        <select asp-for="Mascota.PropietarioId">
                             <option value="">Selecciona un propietario</option>
                             @foreach (var p in Model.ListaPropietarios)
                             {
                                 <option value="@p.Id">@p.Nombre @p.Apellidos</option>
                             }
                         </select>
+                        <span asp-validation-for="Mascota.PropietarioId" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Nombre</label>
-                        <input asp-for="Nombre" placeholder="Ej: Rocky" />
+                        <input asp-for="Mascota.Nombre" placeholder="Ej: Rocky" />
+                        <span asp-validation-for="Mascota.Nombre" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Especie</label>
-                        <input asp-for="Especie" placeholder="Ej: Perro" />
+                        <input asp-for="Mascota.Especie" placeholder="Ej: Perro" />
+                        <span asp-validation-for="Mascota.Especie" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Raza</label>
-                        <input asp-for="Raza" placeholder="Ej: Golden Retriever" />
+                        <input asp-for="Mascota.Raza" placeholder="Ej: Golden Retriever" />
+                        <span asp-validation-for="Mascota.Raza" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Fecha de Nacimiento</label>
-                        <input asp-for="FechaNacimiento" type="date" />
+                        <input asp-for="Mascota.FechaNacimiento" type="date" />
+                        <span asp-validation-for="Mascota.FechaNacimiento" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Estado</label>
-                        <select asp-for="Estado">
+                        <select asp-for="Mascota.Estado">
                             <option value="true">Activo</option>
                             <option value="false">Inactivo</option>
                         </select>

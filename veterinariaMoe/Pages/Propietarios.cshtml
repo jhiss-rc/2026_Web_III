@@ -21,23 +21,27 @@
                     @Html.AntiForgeryToken()
                     <div class="campo">
                         <label>Nombre</label>
-                        <input asp-for="Nombre" placeholder="Ej: Juan" />
+                        <input asp-for="Propietario.Nombre" placeholder="Ej: Juan" />
+                        <span asp-validation-for="Propietario.Nombre" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Apellidos</label>
-                        <input asp-for="Apellidos" placeholder="Ej: Pérez" />
+                        <input asp-for="Propietario.Apellidos" placeholder="Ej: Pérez" />
+                        <span asp-validation-for="Propietario.Apellidos" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Teléfono</label>
-                        <input asp-for="Telefono" placeholder="Ej: 555-1234" />
+                        <input asp-for="Propietario.Telefono" placeholder="Ej: 555-1234" />
+                        <span asp-validation-for="Propietario.Telefono" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Email</label>
-                        <input asp-for="Email" type="email" placeholder="Ej: juan@correo.com" />
+                        <input asp-for="Propietario.Email" type="email" placeholder="Ej: juan@correo.com" />
+                        <span asp-validation-for="Propietario.Email" class="texto-error"></span>
                     </div>
                     <div class="campo">
                         <label>Estado</label>
-                        <select asp-for="Estado">
+                        <select asp-for="Propietario.Estado">
                             <option value="true">Activo</option>
                             <option value="false">Inactivo</option>
                         </select>

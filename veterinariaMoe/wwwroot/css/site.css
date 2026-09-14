@@ -675,3 +675,11 @@ body {
 .boton-guardar:hover {
   background-color: var(--cafe-oscuro);
 }
+
+/* ===== Validaciones ===== */
+.texto-error {
+  color: #B71C1C;
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+  display: block;
+}

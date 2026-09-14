@@ -8,19 +8,7 @@ namespace veterinariaMoe.Pages
     public class PropietariosModel : PageModel
     {
         [BindProperty]
-        public string Nombre { get; set; } = "";
-
-        [BindProperty]
-        public string Apellidos { get; set; } = "";
-
-        [BindProperty]
-        public string Telefono { get; set; } = "";
-
-        [BindProperty]
-        public string Email { get; set; } = "";
-
-        [BindProperty]
-        public bool Estado { get; set; } = true;
+        public Propietario Propietario { get; set; } = new();
 
         public List<Propietario> ListaPropietarios { get; set; } = new();
 
@@ -31,17 +19,14 @@ namespace veterinariaMoe.Pages
 
         public IActionResult OnPost()
         {
-            var nuevo = new Propietario
+            if (!ModelState.IsValid)
             {
-                Id        = BaseDatos.Propietarios.Count + 1,
-                Nombre    = Nombre,
-                Apellidos = Apellidos,
-                Telefono  = Telefono,
-                Email     = Email,
-                Estado    = Estado
-            };
+                ListaPropietarios = BaseDatos.Propietarios;
+                return Page();
+            }
 
-            BaseDatos.Propietarios.Add(nuevo);
+            Propietario.Id = BaseDatos.Propietarios.Count + 1;
+            BaseDatos.Propietarios.Add(Propietario);
 
             return RedirectToPage("/Propietarios");
         }
