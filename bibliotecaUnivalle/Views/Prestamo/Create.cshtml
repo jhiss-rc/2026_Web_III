@@ -1,0 +1,53 @@
+@model bibliotecaUnivalle.Models.Prestamo
+@{
+    ViewData["Title"] = "Nuevo Préstamo";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Nuevo Préstamo</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Datos del Préstamo</h5>
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="campo">
+                        <label asp-for="IdUsuario"></label>
+                        <input asp-for="IdUsuario" type="number" placeholder="ID del usuario" />
+                        <span asp-validation-for="IdUsuario" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="IdLibro"></label>
+                        <input asp-for="IdLibro" type="number" placeholder="ID del libro" />
+                        <span asp-validation-for="IdLibro" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="FechaPrestamo"></label>
+                        <input asp-for="FechaPrestamo" type="date" />
+                        <span asp-validation-for="FechaPrestamo" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="FechaDevolucion"></label>
+                        <input asp-for="FechaDevolucion" type="date" />
+                        <span asp-validation-for="FechaDevolucion" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="EstadoPrestamo"></label>
+                        <select asp-for="EstadoPrestamo">
+                            <option value="Activo">Activo</option>
+                            <option value="Devuelto">Devuelto</option>
+                            <option value="Vencido">Vencido</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

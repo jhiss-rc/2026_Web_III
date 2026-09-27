@@ -1,0 +1,44 @@
+@model bibliotecaUnivalle.Models.Prestamo
+@{
+    ViewData["Title"] = "Detalle Préstamo";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Detalle del Préstamo</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Información</h5>
+                <div class="campo">
+                    <label>ID Usuario</label>
+                    <input value="@Model.IdUsuario" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>ID Libro</label>
+                    <input value="@Model.IdLibro" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Fecha de Préstamo</label>
+                    <input value="@Model.FechaPrestamo.ToString("dd/MM/yyyy")" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Fecha de Devolución</label>
+                    <input value="@Model.FechaDevolucion.ToString("dd/MM/yyyy")" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@Model.EstadoPrestamo" class="campo-texto" disabled />
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="boton-cafe">Editar</a>
+                    <a asp-action="Index" class="boton-cafe-borde">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

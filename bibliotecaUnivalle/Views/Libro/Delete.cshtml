@@ -1,0 +1,38 @@
+@model bibliotecaUnivalle.Models.Libro
+@{
+    ViewData["Title"] = "Eliminar Libro";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Eliminar Libro</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">¿Seguro que deseas eliminar este libro?</h5>
+                <div class="campo">
+                    <label>Título</label>
+                    <input value="@Model.Titulo" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Autor</label>
+                    <input value="@Model.Autor" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Catálogo</label>
+                    <input value="@Model.Catalogo" class="campo-texto" disabled />
+                </div>
+                <form asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="boton-guardar" style="background-color:#B71C1C;">Confirmar Eliminación</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

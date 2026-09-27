@@ -1,0 +1,52 @@
+@model bibliotecaUnivalle.Models.Libro
+@{
+    ViewData["Title"] = "Detalle Libro";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Detalle del Libro</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Información</h5>
+                <div class="campo">
+                    <label>Título</label>
+                    <input value="@Model.Titulo" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Autor</label>
+                    <input value="@Model.Autor" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>ISBN</label>
+                    <input value="@Model.ISBN" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Catálogo</label>
+                    <input value="@Model.Catalogo" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Año de Publicación</label>
+                    <input value="@Model.AnioPublicacion" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Cantidad Disponible</label>
+                    <input value="@Model.CantidadDisponible" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@(Model.Estado ? "Activo" : "Inactivo")" class="campo-texto" disabled />
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="boton-cafe">Editar</a>
+                    <a asp-action="Index" class="boton-cafe-borde">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

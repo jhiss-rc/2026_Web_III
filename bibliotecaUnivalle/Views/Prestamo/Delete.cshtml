@@ -1,0 +1,42 @@
+@model bibliotecaUnivalle.Models.Prestamo
+@{
+    ViewData["Title"] = "Eliminar Préstamo";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Eliminar Préstamo</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">¿Seguro que deseas eliminar este préstamo?</h5>
+                <div class="campo">
+                    <label>ID Usuario</label>
+                    <input value="@Model.IdUsuario" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>ID Libro</label>
+                    <input value="@Model.IdLibro" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Fecha Préstamo</label>
+                    <input value="@Model.FechaPrestamo.ToString("dd/MM/yyyy")" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@Model.EstadoPrestamo" class="campo-texto" disabled />
+                </div>
+                <form asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="boton-guardar" style="background-color:#B71C1C;">Confirmar Eliminación</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

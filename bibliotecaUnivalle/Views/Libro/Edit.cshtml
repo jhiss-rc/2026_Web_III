@@ -1,0 +1,63 @@
+@model bibliotecaUnivalle.Models.Libro
+@{
+    ViewData["Title"] = "Editar Libro";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Editar Libro</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Editar Datos</h5>
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <div class="campo">
+                        <label asp-for="Titulo"></label>
+                        <input asp-for="Titulo" />
+                        <span asp-validation-for="Titulo" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Autor"></label>
+                        <input asp-for="Autor" />
+                        <span asp-validation-for="Autor" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="ISBN"></label>
+                        <input asp-for="ISBN" />
+                        <span asp-validation-for="ISBN" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Catalogo"></label>
+                        <input asp-for="Catalogo" />
+                        <span asp-validation-for="Catalogo" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="AnioPublicacion"></label>
+                        <input asp-for="AnioPublicacion" type="number" />
+                        <span asp-validation-for="AnioPublicacion" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="CantidadDisponible"></label>
+                        <input asp-for="CantidadDisponible" type="number" />
+                        <span asp-validation-for="CantidadDisponible" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Estado"></label>
+                        <select asp-for="Estado">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar Cambios</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

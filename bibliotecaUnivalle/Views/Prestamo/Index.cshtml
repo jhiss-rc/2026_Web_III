@@ -1,0 +1,60 @@
+@model IEnumerable<bibliotecaUnivalle.Models.Prestamo>
+@{
+    ViewData["Title"] = "Préstamos";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Préstamos</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="mb-3">
+        <a asp-action="Create" class="boton-cafe">+ Nuevo Préstamo</a>
+    </div>
+    <div class="panel-tabla">
+        <div class="panel-tabla__encabezado">
+            <span class="panel-tabla__titulo">Lista de Préstamos</span>
+        </div>
+        <div class="table-responsive">
+            <table class="tabla-citas">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID Usuario</th>
+                        <th>ID Libro</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.IdUsuario</td>
+                            <td>@item.IdLibro</td>
+                            <td>@item.FechaPrestamo.ToString("dd/MM/yyyy")</td>
+                            <td>@item.FechaDevolucion.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <span class="estado-cita @(item.EstadoPrestamo == "Activo" ? "estado-completada" : "estado-cancelada")">
+                                    @item.EstadoPrestamo
+                                </span>
+                            </td>
+                            <td>
+                                <div class="acciones-tabla">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="boton-accion boton-accion--editar">Editar</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="boton-accion boton-accion--ver">Ver</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="boton-accion boton-accion--cancelar">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

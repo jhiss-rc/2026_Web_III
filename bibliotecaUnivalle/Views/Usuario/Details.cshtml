@@ -1,0 +1,48 @@
+@model bibliotecaUnivalle.Models.Usuario
+@{
+    ViewData["Title"] = "Detalle Usuario";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Detalle del Usuario</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Información</h5>
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input value="@Model.Nombre" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Apellido</label>
+                    <input value="@Model.Apellido" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Correo</label>
+                    <input value="@Model.Email" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Rol</label>
+                    <input value="@Model.Rol" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input value="@(Model.Telefono ?? "-")" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Estado</label>
+                    <input value="@(Model.Estado ? "Activo" : "Inactivo")" class="campo-texto" disabled />
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="boton-cafe">Editar</a>
+                    <a asp-action="Index" class="boton-cafe-borde">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@model bibliotecaUnivalle.Models.Usuario
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Eliminar Usuario</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">¿Seguro que deseas eliminar este usuario?</h5>
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input value="@Model.Nombre @Model.Apellido" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Correo</label>
+                    <input value="@Model.Email" class="campo-texto" disabled />
+                </div>
+                <div class="campo">
+                    <label>Rol</label>
+                    <input value="@Model.Rol" class="campo-texto" disabled />
+                </div>
+                <form asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="boton-guardar" style="background-color:#B71C1C;">Confirmar Eliminación</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Bienvenido";
+}
+
+<div class="p-4 rounded" style="background-color: #001f3f; border-left: 6px solid #003366; color: #ffffff;">
+    <h2>Bienvenido, @Context.Session.GetString("UsuarioNombre")</h2>
+    <p class="mb-0">Rol: <strong>Administrador</strong></p>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Usuarios</h5>
+                <p class="card-text">Gestiona los usuarios del sistema.</p>
+                <a asp-controller="Usuario" asp-action="Index" class="btn btn-primary">Ver Usuarios</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Libros</h5>
+                <p class="card-text">Gestiona el catálogo de libros.</p>
+                <a asp-controller="Libro" asp-action="Index" class="btn btn-primary">Ver Libros</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Préstamos</h5>
+                <p class="card-text">Gestiona todos los préstamos.</p>
+                <a asp-controller="Prestamo" asp-action="Index" class="btn btn-primary">Ver Préstamos</a>
+            </div>
+        </div>
+    </div>
+</div>

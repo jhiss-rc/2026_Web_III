@@ -1,0 +1,67 @@
+@model bibliotecaUnivalle.Models.Usuario
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<div class="encabezado-pagina">
+    <div class="container">
+        <h1 class="titulo-pagina">Editar Usuario</h1>
+    </div>
+</div>
+
+<div class="container seccion-contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="registro-contenedor">
+                <h5 class="titulo-panel">Editar Datos</h5>
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <div class="campo">
+                        <label asp-for="Nombre"></label>
+                        <input asp-for="Nombre" />
+                        <span asp-validation-for="Nombre" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Apellido"></label>
+                        <input asp-for="Apellido" />
+                        <span asp-validation-for="Apellido" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Contrasena"></label>
+                        <input asp-for="Contrasena" type="password" />
+                        <span asp-validation-for="Contrasena" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Rol"></label>
+                        <select asp-for="Rol">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Bibliotecario">Bibliotecario</option>
+                            <option value="Usuario">Usuario</option>
+                        </select>
+                        <span asp-validation-for="Rol" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Telefono"></label>
+                        <input asp-for="Telefono" />
+                        <span asp-validation-for="Telefono" class="texto-error"></span>
+                    </div>
+                    <div class="campo">
+                        <label asp-for="Estado"></label>
+                        <select asp-for="Estado">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="boton-guardar">Guardar Cambios</button>
+                    <a asp-action="Index" class="boton-cafe-borde d-block text-center mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

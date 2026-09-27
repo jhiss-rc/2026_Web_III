@@ -1,0 +1,101 @@
+@model bibliotecaUnivalle.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Univalle Sucre - Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #ffffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background-color: #f5e6d3;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            padding: 10px;
+        }
+        .login-header {
+            background-color: #4a2c2a;
+            border-radius: 15px 15px 0 0;
+            color: #f5e6d3;
+            text-align: center;
+            padding: 20px;
+        }
+        .login-header h4 {
+            margin: 0;
+            font-weight: bold;
+        }
+        .btn-cafe {
+            background-color: #7b3f00;
+            color: white;
+            border-radius: 10px;
+            border: none;
+        }
+        .btn-cafe:hover {
+            background-color: #4a2c2a;
+            color: white;
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; max-width: 420px;">
+        <div class="login-card">
+            <div class="login-header">
+                <h4>Biblioteca Univalle Sucre</h4>
+                <small>Login</small>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Login" method="post">
+                    @Html.AntiForgeryToken()
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" style="border-radius: 10px;">
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <p class="mb-0">@error.ErrorMessage</p>
+                            }
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label fw-bold" style="color: #4a2c2a;"></label>
+                        <input asp-for="Email" class="form-control" placeholder="correo@ejemplo.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Contrasena" class="form-label fw-bold" style="color: #4a2c2a;"></label>
+                        <input asp-for="Contrasena" class="form-control" placeholder="Contraseña" />
+                        <span asp-validation-for="Contrasena" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-cafe">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
